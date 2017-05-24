@@ -55,11 +55,11 @@ class ModelView(BaseModelView):
         return self.model.get_by_id(id)
 
     def get_list(self, page, sort_field, sort_desc, search, filters, page_size=None):
-        # FIXME
-        self._test()
 
+        # FIXME
+        # self._test()
         # from flask_login import current_user
-        # namespace = current_user.id_hash
+        # namespace = current_user.company.id_hash
         namespace = None
 
         # Pagination
