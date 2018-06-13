@@ -7,6 +7,7 @@
 
 
 from collections import defaultdict
+from itertools import chain
 
 from flask_admin.model import BaseModelView
 from schematics.types import BaseType
@@ -15,7 +16,7 @@ from wtforms import Form
 
 class ModelView(BaseModelView):
     """
-    https://flask-admin.readthedocs.io/adding_a_new_model_backend
+    https://flask-admin.readthedocs.io/en/latest/adding_a_new_model_backend/
     ---
     https://cloud.google.com/datastore/docs/concepts/metadataqueries
     https://cloud.google.com/datastore/docs/concepts/stats
@@ -74,7 +75,7 @@ class ModelView(BaseModelView):
         return None
 
     def scaffold_list_columns(self):
-        return (p for p in dir(self.model) if isinstance(getattr(self.model, p), BaseType))
+        return chain(['id'], (p for p in dir(self.model) if isinstance(getattr(self.model, p), BaseType)))
 
     def scaffold_form(self):
         # TODO
